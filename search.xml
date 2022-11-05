@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>两数之和</title>
+      <link href="/2022/11/05/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/"/>
+      <url>/2022/11/05/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、问题描述"><a href="#一、问题描述" class="headerlink" title="一、问题描述"></a>一、问题描述</h2><p>给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出和为目标值 target  的那两个整数，并返回它们的数组下标。你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。你可以按任意顺序返回答案。</p><p>示例 1：</p><p>输入：nums &#x3D; [2,7,11,15], target &#x3D; 9<br>输出：[0,1]<br>解释：因为 nums[0] + nums[1] &#x3D;&#x3D; 9 ，返回 [0, 1] 。</p><p>示例 2：</p><p>输入：nums &#x3D; [3,2,4], target &#x3D; 6<br>输出：[1,2]</p><p>示例 3：</p><p>输入：nums &#x3D; [3,3], target &#x3D; 6<br>输出：[0,1]</p><p>提示：</p><p>2 &lt;&#x3D; nums.length &lt;&#x3D; 104<br>-109 &lt;&#x3D; nums[i] &lt;&#x3D; 109<br>-109 &lt;&#x3D; target &lt;&#x3D; 109<br>只会存在一个有效答案<br>进阶：你可以想出一个时间复杂度小于 O(n2) 的算法吗？</p><p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode.cn/problems/two-sum">https://leetcode.cn/problems/two-sum</a></p><h2 id="二、解题一：暴力求解"><a href="#二、解题一：暴力求解" class="headerlink" title="二、解题一：暴力求解"></a>二、解题一：暴力求解</h2><h3 id="1-算法思想"><a href="#1-算法思想" class="headerlink" title="1. 算法思想"></a>1. 算法思想</h3><p><strong>暴力解法：</strong>写两重循环，并且在遍历循环的过程当中，判断内外循环对应的两个数是否满足条件。如果满足条件则直接返回对应的下标。如果两个循环均遍历结束但是依然没有合适的解，则返回空数组即可。</p><h3 id="2-时空复杂度分析"><a href="#2-时空复杂度分析" class="headerlink" title="2. 时空复杂度分析"></a>2. 时空复杂度分析</h3><p><strong>时间复杂度：</strong>两重循环，时间复杂度为 $O(n^2)$</p><p><strong>空间复杂度：</strong>开几个变量而已，空间复杂度为 $O(1)$</p><h3 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3. 代码实现"></a>3. 代码实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] twoSum(<span class="type">int</span>[] nums, <span class="type">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length; i ++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i + <span class="number">1</span>; j &lt; nums.length; j++)&#123;</span><br><span class="line">                <span class="comment">//判断该对应的两个数是否满足条件</span></span><br><span class="line">                <span class="keyword">if</span>(nums[i] + nums[j] == target)&#123;</span><br><span class="line">                    <span class="comment">//返回对应的下标</span></span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;i, j&#125;;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//返回空</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="三、解题二：哈希表求解"><a href="#三、解题二：哈希表求解" class="headerlink" title="三、解题二：哈希表求解"></a>三、解题二：哈希表求解</h2><h3 id="1-算法思想-1"><a href="#1-算法思想-1" class="headerlink" title="1. 算法思想"></a>1. 算法思想</h3><p><strong>哈希表解法：</strong>在暴力解法中，第二重循环的遍历和元素的判断比较耗时。具体来说就是在遍历元素的过程当中，判断该两个元素的和是否满足条件比较耗时。针对这一现象，我们能否进一步优化呢？</p><p>当然可以！我们可以使用哈希表，它可以快速地查找出数组中是否存在目标元素。如果存在，则返回其索引。如果不存在，则将元素该元素及其索引一并加入哈希表当中。如果最后元素都不存在，则返回空数组即可。</p><p><em>注：哈希表的每个元素分别存数组的值，以及其对应的索引。</em></p><h3 id="2-时空复杂度"><a href="#2-时空复杂度" class="headerlink" title="2. 时空复杂度"></a>2. 时空复杂度</h3><p><strong>时间复杂度：</strong>由于只有一重循环，并且对于元素的哈希表查找为 $O(1)$，因此总的时间复杂度为 $O(n)$</p><p><strong>空间复杂度：</strong>由于遍历元素的过程当中，需要对元素进行哈希表存储，因此空间复杂度为 $O(n)$</p><p><em>注：$n$ 为元素的数量</em></p><h3 id="3-代码实现-1"><a href="#3-代码实现-1" class="headerlink" title="3. 代码实现"></a>3. 代码实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] twoSum(<span class="type">int</span>[] nums, <span class="type">int</span> target) &#123;</span><br><span class="line">        <span class="comment">//使用哈希表，键表示数组元素值，值表示数组元素值对应的索引</span></span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length; i ++)&#123;</span><br><span class="line">            <span class="comment">//当前元素的差值已经在哈希表当中（匹配）</span></span><br><span class="line">            <span class="keyword">if</span>(map.containsKey(target - nums[i]))&#123;</span><br><span class="line">                <span class="comment">//返回对应的索引数组</span></span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;map.get(target-nums[i]),i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//将元素及其索引加入到哈希表中</span></span><br><span class="line">            map.put(nums[i], i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//无解，返回空数组</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 数据结构 </tag>
+            
+            <tag> java </tag>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/2022/11/05/00%20%E6%A8%A1%E6%9D%BF/"/>
+      <url>/2022/11/05/00%20%E6%A8%A1%E6%9D%BF/</url>
+      
+        <content type="html"><![CDATA[<hr><p>title:两数之和<br>tags:算法</p><hr>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>机器学习笔记</title>
       <link href="/2022/10/30/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
       <url>/2022/10/30/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
