@@ -22,11 +22,11 @@
       
         <tags>
             
-            <tag> 数据结构 </tag>
-            
             <tag> python </tag>
             
             <tag> python基础 </tag>
+            
+            <tag> 数据结构 </tag>
             
         </tags>
       
@@ -44,11 +44,11 @@
       
       <categories>
           
-          <category> MySQL </category>
+          <category> 后端 </category>
           
           <category> 数据库 </category>
           
-          <category> 后端 </category>
+          <category> MySQL </category>
           
           <category> SQL </category>
           
@@ -57,11 +57,11 @@
       
         <tags>
             
-            <tag> MySQL </tag>
+            <tag> 后端 </tag>
             
             <tag> 数据库 </tag>
             
-            <tag> 后端 </tag>
+            <tag> MySQL </tag>
             
             <tag> SQL </tag>
             
@@ -82,9 +82,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> 数据结构 </tag>
+            
+            <tag> 算法 </tag>
             
             <tag> java </tag>
             
