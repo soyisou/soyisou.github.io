@@ -11,35 +11,35 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Use Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: '20'
+      # - name: Use Node.js
+      #   uses: actions/setup-node@v1
+      #   with:
+      #     node-version: '20'
 
-      - name: Cache dependencies
-        uses: actions/cache@v3
-        id: npm-cache
-        with:
-          path: |
-            ~/.npm
-            **/node_modules
-          key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-cache-
+      # - name: Cache dependencies
+      #   uses: actions/cache@v3
+      #   id: npm-cache
+      #   with:
+      #     path: |
+      #       ~/.npm
+      #       **/node_modules
+      #     key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-npm-cache-
 
-      - name: Install dependencies
-        if: steps.npm-cache.outputs.cache-hit != 'true'
-        run: npm install
+      # - name: Install dependencies
+      #   if: steps.npm-cache.outputs.cache-hit != 'true'
+      #   run: npm install
 
-      - name: Run Build Script
-        run: npm run build
+      # - name: Run Build Script
+      #   run: npm run build
 
-      - name: 生成 .nojekyll 文件
-        run: touch .vuepress/dist/.nojekyll
+      # - name: 生成 .nojekyll 文件
+      #   run: touch .vuepress/dist/.nojekyll
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           BRANCH: blogs
           FOLDER: .vuepress/dist
-          SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }
+          SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
