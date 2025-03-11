@@ -22,7 +22,8 @@ blog:
 isShowTitleInHome: true
 actionText: About
 actionLink: /views/other/about
-
+footer:
+  startYear: 2024
 features:
 - title: 过去
   details: 开发一款看着开心、写着顺手的 vuepress 博客主题。
