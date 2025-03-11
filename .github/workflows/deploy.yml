@@ -38,5 +38,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           BRANCH: blogs
-          FOLDER: docs/.vuepress/dist
+          FOLDER: .vuepress/dist
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
