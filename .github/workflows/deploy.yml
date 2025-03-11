@@ -39,4 +39,4 @@ jobs:
         with:
           BRANCH: blogs
           FOLDER: docs/.vuepress/dist
-          SSH_PRIVATE_KEY: ${{ secrets.ACCESS_TOKEN }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
