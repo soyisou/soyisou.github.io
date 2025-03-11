@@ -44,4 +44,4 @@ jobs:
           BRANCH: blogs
           FOLDER: .vuepress/dist
           # 当前仓库的密钥
-          SSH_PRIVATE_KEY: ${{ secrets.ACCESS_TOKEN }}
+          SSH-KEY: ${{ secrets.DEPLOY_KEY }}
