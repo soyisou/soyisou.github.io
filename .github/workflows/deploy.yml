@@ -31,7 +31,6 @@ jobs:
         run: rm -rf node_modules
 
       - name: Install dependencies
-        # 如果没有命中缓存才执行 npm install
         if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm install
 
