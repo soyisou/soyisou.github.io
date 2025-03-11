@@ -42,4 +42,4 @@ jobs:
         with:
           BRANCH: blogs
           FOLDER: .vuepress/dist
-          SSH-KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
+          SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
