@@ -34,10 +34,14 @@ jobs:
       - name: Run Build Script
         run: npm run build
 
+      # 禁用 Jekyll
+      - name: 生成 .nojekyll 文件
+        run: touch .vuepress/dist/.nojekyll
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           BRANCH: blogs
           FOLDER: .vuepress/dist
           # 当前仓库的密钥
-          SSH_PRIVATE_KEY: ${{ secrets.ACCESS_TOKEN }}
+          TOKEN: ${{ secrets.ACCESS_TOKEN }}
