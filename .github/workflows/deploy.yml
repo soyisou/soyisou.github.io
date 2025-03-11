@@ -32,12 +32,6 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-      
-      # Step 3: 清除缓存
-      - name: Clear Cache
-        run: |
-          rm -rf node_modules
-          npm cache clean --force
 
       - name: Run Build Script
         run: npm run build
