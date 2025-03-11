@@ -8,14 +8,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # Step 1: 拉取代码
       - name: Checkout code
         uses: actions/checkout@v2
 
+      # Step 2: 设置 Node.js 环境
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
           node-version: '20'
 
+      # Step 3: 缓存依赖
       - name: Cache dependencies
         uses: actions/cache@v3
         id: npm-cache
@@ -27,19 +30,23 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-npm-cache-
 
+      # Step 4: 删除 node_modules（可选）
       - name: Remove node_modules
         run: rm -rf node_modules
 
+      # Step 5: 安装依赖
       - name: Install dependencies
         run: npm install
 
+      # Step 6: 运行构建脚本
       - name: Run Build Script
         run: npm run build
 
-      # 禁用 Jekyll
+      # Step 7: 禁用 Jekyll
       - name: 生成 .nojekyll 文件
         run: touch .vuepress/dist/.nojekyll
 
+      # Step 8: 部署到 GitHub Pages
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
