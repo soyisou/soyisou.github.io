@@ -1,45 +1,139 @@
 import { defineUserConfig } from "vuepress";
 import recoTheme from "vuepress-theme-reco";
-import { viteBundler } from '@vuepress/bundler-vite'
-import { webpackBundler } from '@vuepress/bundler-webpack'
+import { viteBundler } from "@vuepress/bundler-vite";
+import { webpackBundler } from "@vuepress/bundler-webpack";
 
 export default defineUserConfig({
-  title: "vuepress-theme-reco",
-  description: "Just playing around",
+  title: "AcJava",
+  description: "AcJava让Java更简单",
   bundler: viteBundler(),
   // bundler: webpackBundler(),
   theme: recoTheme({
     logo: "/logo.png",
-    author: "reco_luan",
+    author: "铭轩",
     authorAvatar: "/head.png",
-    docsRepo: "https://github.com/vuepress-reco/vuepress-theme-reco-next",
+    docsRepo: "https://github.com/soyisou/soyisou.github.io",
     docsBranch: "main",
     docsDir: "example",
     lastUpdatedText: "",
     // series 为原 sidebar
     series: {
-      "/docs/theme-reco/": [
+      "/docs/guide/": [
+        "introduce",
+        "getting-started",
+        "gui-builder",
+        "package-manager",
+        "custom-style",
+        "style",
+        "icon",
+        "bundler",
+        "builtin-page",
+        "folder-specification",
+        "register-components",
+        "register-layouts",
+        "contribute",
+      ],
+      "/docs/theme/": [
         {
-          text: "module one",
-          children: ["home", "theme"],
+          text: "Frontmatter",
+          children: ["frontmatter-home", "frontmatter-page"],
         },
         {
-          text: "module two",
-          children: ["api", "plugin"],
+          text: "主题配置",
+          children: [
+            {
+              text: "Locale 配置",
+              children: [
+                "home",
+                "source-dir",
+                "git",
+                "series",
+                "navbar",
+                "comments",
+                "bulletin-popover",
+                "password",
+                "appearance",
+                "social-links",
+                "pages",
+                "doc-search",
+                "auto-set-category",
+                "auto-set-series",
+                "custom-primary-color",
+              ],
+            },
+            {
+              text: "多语言",
+              children: ["multilingual"],
+            },
+          ],
         },
+        {
+          text: "Markdown 扩展",
+          children: [
+            "custom-container",
+            "markdown-task",
+            "markdown-vue-preview",
+            "markdown-file-parse",
+          ],
+        },
+      ],
+      "/docs/plugins/": [
+        "page",
+        "comments",
+        "vue-previews",
+        "bulletin-popover",
       ],
     },
     navbar: [
-      { text: "Home", link: "/" },
-      { text: "Categories", link: "/categories/reco/1.html" },
-      { text: "Tags", link: "/tags/tag1/1.html" },
+      { text: "首页", link: "/", icon: "IconHome" },
+      { text: "指南", link: "/docs/guide/introduce", icon: "IconCompass" },
       {
-        text: "Docs",
+        text: "参考",
+        icon: "IconDocument",
         children: [
-          { text: "vuepress-reco", link: "/docs/theme-reco/theme" },
-          { text: "vuepress-theme-reco", link: "/blogs/other/guide" },
+          {
+            text: "配置",
+            children: [
+              {
+                text: "Vuepress 配置",
+                link: "https://v2.vuepress.vuejs.org/zh/reference/config.html",
+              },
+              { text: "Frontmatter", link: "/docs/theme/frontmatter-home" },
+              { text: "主题配置", link: "/docs/theme/home" },
+              { text: "Markdown 扩展", link: "/docs/theme/custom-container" },
+            ],
+          },
+          {
+            text: "插件",
+            children: [
+              { text: "page", link: "/docs/plugins/page" },
+              { text: "comments", link: "/docs/plugins/comments" },
+              { text: "vue-previews", link: "/docs/plugins/vue-previews" },
+              {
+                text: "bulletin-popover",
+                link: "/docs/plugins/bulletin-popover",
+              },
+            ],
+          },
         ],
       },
+      {
+        text: "版本",
+        icon: "IconSubVolume",
+        children: [
+          {
+            text: "2.x(rc)",
+            link: "https://vuepress-theme-reco.recoluan.com/",
+          },
+          {
+            text: "1.x",
+            link: "http://v1.vuepress-reco.recoluan.com/views/1.x/",
+          },
+        ],
+      },
+      { text: "博客", link: "/posts", icon: "IconDocumentAttachment" },
+      { text: "案例", link: "/docs/others/examples", icon: "IconFire" },
+      { text: "留言板", link: "/docs/message-board", icon: "IconChat" },
     ],
     bulletin: {
       body: [
