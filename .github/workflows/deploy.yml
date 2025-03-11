@@ -31,7 +31,6 @@ jobs:
         run: rm -rf node_modules
 
       - name: Install dependencies
-        if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm install
 
       - name: Run Build Script
