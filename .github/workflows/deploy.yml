@@ -27,13 +27,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-npm-cache-
 
+      - name: Remove node_modules
+        run: rm -rf node_modules
+
       - name: Install dependencies
-        if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm install
 
       - name: Run Build Script
         run: npm run build
 
+      # 禁用 Jekyll
       - name: 生成 .nojekyll 文件
         run: touch .vuepress/dist/.nojekyll
 
