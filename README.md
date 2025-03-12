@@ -15,7 +15,7 @@ bannerBrand:
     - { text: Guide, link: '/docs/guide/introduce' }
     - { text: 主题配置, link: '/docs/theme/series', type: 'plain' }
   socialLinks:
-    - { icon: 'LogoGithub', link: 'https://github.com/vuepress-reco/vuepress-theme-reco' }
+    - { icon: 'LogoGithub', link: 'https://github.com/soyisou/soyisou.github.io' }
 blog:
   socialLinks:
     - { icon: 'LogoGithub', link: 'https://github.com/recoluan' }
